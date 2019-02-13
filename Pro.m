@@ -217,14 +217,24 @@ figure(3)
 subplot(2,2,1), imshow(image10)
 subplot(2,2,2), imshow(image11)
 subplot(2,2,3), imshow(image12)
+
+
+
 % 
-% newk_3 = double(image4);
-% nrows_3 = size(newk_3,1);
-% ncols_3 = size(newk_3,2);
-% ab_3 = reshape(newk_3,nrows_3*ncols_3,3);
+newk_3 = double(image10);
+nrows_3 = size(newk_3,1);
+ncols_3 = size(newk_3,2);
+ab_3 = reshape(newk_3,nrows_3*ncols_3,3);
+
+[idx_1_3, cluster_center_3] = kmeans(ab_3,3);
+
 % 
-% [idx_1_3, cluster_center_3] = kmeans(ab_3,3);
-% 
+figure(4)
+scatter3(ab_3(idx_1_3 == 1,3),ab_3(idx_1_3 == 1,2),ab_3(idx_1_3 == 1,3),'r');
+hold on
+scatter3(ab_3(idx_1_3 == 2,3),ab_3(idx_1_3 == 2,2),ab_3(idx_1_3 == 2,3),'g');
+scatter3(ab_3(idx_1_3 == 3,3),ab_3(idx_1_3 == 3,2),ab_3(idx_1_3 == 3,3),'b');
+hold off
 % b_k_3 = ab_3(idx_1_3 ==1,3);
 % g_k_3 = ab_3(idx_1_3 ==1,2);
 % r_k_3 = ab_3(idx_1_3 ==1,1);
